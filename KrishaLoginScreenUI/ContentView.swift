@@ -42,6 +42,9 @@ struct ContentView: View {
                         .cornerRadius(10)
                         .border(.red,width: CGFloat(wrongPassword))
                     
+                    NavigationLink(destination: Text("You are logged in @\(username)"), isActive: $showingLoginScreen) {
+                        EmptyView()
+                    }
                     Button("Login"){
                         authenticateUser(username: username, password: password)
                     }
@@ -49,10 +52,9 @@ struct ContentView: View {
                     .frame(width:300, height:50)
                     .background(Color.pink)
                     .cornerRadius(10)
+                    .padding()
                     
-                    NavigationLink(destination: Text("You are logged in @\(username)"), isActive: $showingLoginScreen) {
-                        EmptyView()
-                    }
+                  
                 }
                 
             }
@@ -60,9 +62,9 @@ struct ContentView: View {
         }
     }
     func authenticateUser(username: String, password: String){
-        if username.lowercased() == "krisha123"{
+        if username == "Krisha123"{
             wrongUsername = 0
-            if password.lowercased() == "123456"{
+            if password.lowercased() == "123"{
                 wrongPassword = 0
                 showingLoginScreen == true
             }else{
